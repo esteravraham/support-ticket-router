@@ -20,7 +20,7 @@
 
 ## מודל
 - `MODEL = "gpt-6-luna"`, מוגדר **פעם אחת** בראש המחברת, כדי שיהיה קל להחליף.
-- `ChatOpenAI(model=MODEL, temperature=0)`.
+- `ChatOpenAI(model=MODEL, temperature=0, reasoning_effort="none")`. `gpt-6-luna` הוא מודל reasoning, ובלי `reasoning_effort="none"` הוא דוחה את `temperature=0`.
 - **למה המודל הזה:** סיווג פנייה לאחת משלוש קטגוריות הוא משימה קלה, ולא צריך בשבילה מודל גדול ויקר. `gpt-6-luna` הוא מהמודלים הזולים ביותר בדף התמחור של OpenAI, והשתמשתי בו כבר בתרגיל 1. `temperature=0` נותן תשובות עקביות ככל האפשר: אותה פנייה תגיע לאותו צוות בכל הרצה.
 
 ## ממשק
@@ -112,3 +112,11 @@ flowchart LR
 | 8 | עמומה | I paid for Premium but the Premium features still don't show up in the app | technical |
 | 9 | עמומה | Do you have a student discount? | billing |
 | 10 | עמומה | Thanks for fixing the login bug last week! Any plans for a dark mode? | general |
+
+---
+
+## גרסאות ושינויים
+
+**גרסה 1:** `ChatOpenAI(model=MODEL, temperature=0)`. בהרצה ב־Colab, OpenAI החזיר שגיאה 400: `gpt-6-luna` לא תומך ב־`temperature=0`, ורק ערך ברירת המחדל (1) נתמך.
+
+**גרסה 2 (סופית):** נוסף `reasoning_effort="none"`. לפי דף המודל, `gpt-6-luna` הוא מודל reasoning שתומך ב־`reasoning.effort` עם הערך `none`. כשה־reasoning כבוי, `temperature=0` מתקבל. בדקתי את זה בקריאה אחת לפני העדכון, והמודל החזיר `billing` לפנייה `"I was charged twice this month"`.
