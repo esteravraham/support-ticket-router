@@ -1,0 +1,9 @@
+# Course materials and personal documents stay local
+*.pdf
+*.pptx
+*.docx
+~$*
+
+# Never commit secrets
+.env
+*.key
