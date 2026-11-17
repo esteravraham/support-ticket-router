@@ -112,6 +112,13 @@ flowchart LR
 | 8 | עמומה | I paid for Premium but the Premium features still don't show up in the app | technical |
 | 9 | עמומה | Do you have a student discount? | billing |
 | 10 | עמומה | Thanks for fixing the login bug last week! Any plans for a dark mode? | general |
+| 11 | קשה | My invoice shows the wrong company name. Can you fix it? | billing |
+| 12 | קשה | I got logged out and now the app asks me to pay again for a plan I already have | billing |
+| 13 | קשה | Your new update is terrible. I want my money back. | billing |
+| 14 | קשה | How do I export my tasks to a CSV file? | general |
+| 15 | קשה | The Upgrade button does nothing when I click it | technical |
+| 16 | קשה | האפליקציה לא נפתחת מאז העדכון האחרון | technical |
+| 17 | קשה | Is my credit card information safe with you? | general |
 
 ---
 
@@ -119,4 +126,6 @@ flowchart LR
 
 **גרסה 1:** `ChatOpenAI(model=MODEL, temperature=0)`. בהרצה ב־Colab, OpenAI החזיר שגיאה 400: `gpt-6-luna` לא תומך ב־`temperature=0`, ורק ערך ברירת המחדל (1) נתמך.
 
-**גרסה 2 (סופית):** נוסף `reasoning_effort="none"`. לפי דף המודל, `gpt-6-luna` הוא מודל reasoning שתומך ב־`reasoning.effort` עם הערך `none`. כשה־reasoning כבוי, `temperature=0` מתקבל. בדקתי את זה בקריאה אחת לפני העדכון, והמודל החזיר `billing` לפנייה `"I was charged twice this month"`.
+**גרסה 2:** נוסף `reasoning_effort="none"`. לפי דף המודל, `gpt-6-luna` הוא מודל reasoning שתומך ב־`reasoning.effort` עם הערך `none`. כשה־reasoning כבוי, `temperature=0` מתקבל. בדקתי את זה בקריאה אחת לפני העדכון, והמודל החזיר `billing` לפנייה `"I was charged twice this month"`.
+
+**גרסה 3 (סופית):** המודל ניתב נכון את כל 10 הפניות הראשונות, כולל העמומות. לכן נוספו 7 פניות קשות (11–17) כדי לנסות לבלבל אותו: מילת "תשלום" בתוך בעיה טכנית ולהפך, תלונה שמסתיימת בבקשת החזר, שאלת אבטחה על כרטיס אשראי, ופנייה בעברית.
